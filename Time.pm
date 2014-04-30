@@ -48,13 +48,13 @@ sub new {
 
 	# Widgets.
 	$self->add(
-		undef, 'Curses::UI::Number',
+		'hour1', 'Curses::UI::Number',
 		'-fg' => $args{'-fg'},
 		'-num' => (substr $hour, 0, 1),
 		'-x' => 0,
 	);
 	$self->add(
-		undef, 'Curses::UI::Number',
+		'hour2', 'Curses::UI::Number',
 		'-fg' => $args{'-fg'},
 		'-num' => (substr $hour, 1, 1),
 		'-x' => 7,
@@ -66,13 +66,13 @@ sub new {
 		'-x' => 14,
 	);
 	$self->add(
-		undef, 'Curses::UI::Number',
+		'min1', 'Curses::UI::Number',
 		'-fg' => $args{'-fg'},
 		'-num' => (substr $min, 0, 1),
 		'-x' => 19,
 	);
 	$self->add(
-		undef, 'Curses::UI::Number',
+		'min2', 'Curses::UI::Number',
 		'-fg' => $args{'-fg'},
 		'-num' => (substr $min, 1, 1),
 		'-x' => 26,
@@ -83,6 +83,21 @@ sub new {
 
 	# Return object.
 	return $self;
+}
+
+# Get or set time.
+sub time {
+	my ($self, $time) = @_;
+	if (defined $time) {
+		$self->{'-time'} = $time;
+		my ($sec, $min, $hour) = map { sprintf '%02d', $_ }
+			localtime($time);
+		$self->getobj('hour1')->num(substr $hour, 0, 1);
+		$self->getobj('hour2')->num(substr $hour, 1, 1);
+		$self->getobj('min1')->num(substr $min, 0, 1);
+		$self->getobj('min2')->num(substr $min, 1, 1);
+	}
+	return $self->{'-time'};
 }
 
 1;
