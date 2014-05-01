@@ -10,6 +10,7 @@ abstract 'TODO';
 author 'Michal Špaček <skim@cpan.org>';
 license 'bsd';
 name 'Curses-UI-Time';
+readme_from 'Time.pm';
 resources 'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html'.
 	'?Name=Curses-UI-Time';
 resources 'homepage' => 'https://github.com/tupinek/Curses-UI-Time';
