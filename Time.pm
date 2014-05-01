@@ -36,6 +36,7 @@ sub new {
 		'-time' => time,
 		'-second' => 0,
 		%userargs,
+		-focusable => 0,
 	);
 
 	# Width and height.
