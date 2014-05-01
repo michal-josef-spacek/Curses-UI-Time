@@ -31,6 +31,7 @@ sub new {
 	my ($class, %userargs) = @_;
 	keys_to_lowercase(\%userargs);
 	my %args = (
+		'-colon' => 1,
 		'-fg' => -1,
 		'-time' => time,
 		'-second' => 0,
@@ -65,8 +66,9 @@ sub new {
 		'-x' => 7,
 	);
 	$self->add(
-		undef, 'Label',
+		'colon1', 'Label',
 		'-fg' => $args{'-fg'},
+		'-hidden' => ! $self->{'-colon'},
 		'-text' => $COLON,
 		'-x' => 14,
 	);
@@ -84,8 +86,9 @@ sub new {
 	);
 	if ($self->{'-second'}) {
 		$self->add(
-			undef, 'Label',
+			'colon2', 'Label',
 			'-fg' => $args{'-fg'},
+			'-hidden' => ! $self->{'-colon'},
 			'-text' => $COLON,
 			'-x' => 33,
 		);
@@ -108,6 +111,27 @@ sub new {
 
 	# Return object.
 	return $self;
+}
+
+# Get or set colon flag.
+sub colon {
+	my ($self, $colon) = @_;
+	if (defined $colon) {
+		$self->{'-colon'} = $colon;
+		if ($colon) {
+			$self->getobj('colon1')->show;
+		} else {
+			$self->getobj('colon1')->hide;
+		}
+		if ($self->{'-second'}) {
+			if ($colon) {
+				$self->getobj('colon2')->show;
+			} else {
+				$self->getobj('colon2')->hide;
+			}
+		}
+	}
+	return $self->{'-colon'};
 }
 
 # Get or set time.
