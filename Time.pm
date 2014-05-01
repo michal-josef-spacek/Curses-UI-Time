@@ -39,7 +39,11 @@ sub new {
 
 	# Width and height.
 	$args{'-height'} = height_by_windowscrheight(5, %args);
-	$args{'-width'} = width_by_windowscrwidth(52, %args);
+	if ($args{'-second'}) {
+		$args{'-width'} = width_by_windowscrwidth(52, %args);
+	} else {
+		$args{'-width'} = width_by_windowscrwidth(32, %args);
+	}
 
 	# Create the widget.
 	my $self = $class->SUPER::new(%args);
