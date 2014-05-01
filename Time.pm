@@ -33,12 +33,13 @@ sub new {
 	my %args = (
 		'-fg' => -1,
 		'-time' => time,
+		'-second' => 0,
 		%userargs,
 	);
 
 	# Width and height.
 	$args{'-height'} = height_by_windowscrheight(5, %args);
-	$args{'-width'} = width_by_windowscrwidth(32, %args);
+	$args{'-width'} = width_by_windowscrwidth(52, %args);
 
 	# Create the widget.
 	my $self = $class->SUPER::new(%args);
@@ -77,6 +78,26 @@ sub new {
 		'-num' => (substr $min, 1, 1),
 		'-x' => 26,
 	);
+	if ($self->{'-second'}) {
+		$self->add(
+			undef, 'Label',
+			'-fg' => $args{'-fg'},
+			'-text' => $COLON,
+			'-x' => 33,
+		);
+		$self->add(
+			'sec1', 'Curses::UI::Number',
+			'-fg' => $args{'-fg'},
+			'-num' => (substr $sec, 0, 1),
+			'-x' => 38,
+		);
+		$self->add(
+			'sec2', 'Curses::UI::Number',
+			'-fg' => $args{'-fg'},
+			'-num' => (substr $sec, 1, 1),
+			'-x' => 45,
+		);
+	}
 
 	# Layout.
 	$self->layout;
@@ -96,6 +117,10 @@ sub time {
 		$self->getobj('hour2')->num(substr $hour, 1, 1);
 		$self->getobj('min1')->num(substr $min, 0, 1);
 		$self->getobj('min2')->num(substr $min, 1, 1);
+		if ($self->{'-second'}) {
+			$self->getobj('sec1')->num(substr $sec, 0, 1);
+			$self->getobj('sec2')->num(substr $sec, 1, 1);
+		}
 	}
 	return $self->{'-time'};
 }
