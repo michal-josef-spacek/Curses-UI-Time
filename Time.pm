@@ -155,3 +155,211 @@ sub time {
 }
 
 1;
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+Curses::UI::Time - Create and manipulate time widgets.
+
+=head1 CLASS HIERARCHY
+
+ Curses::UI::Widget
+ Curses::UI::ContainerWidget
+    |
+    +----Curses::UI::ContainerWidget
+       --Curses::UI::Label
+       --Curses::UI::Number
+            |
+            +----Curses::UI::Time
+
+=head1 SYNOPSIS
+
+ use Curses::UI;
+ my $win = $cui->add('window_id', 'Window');
+ my $time = $win->add(
+         'mynum', 'Curses::UI::Time',
+         -time => 1400609240,
+ );
+ $time->draw;
+
+=head1 DESCRIPTION
+
+Curses::UI::Time is a widget that shows a time in graphic form.
+
+=head1 STANDARD OPTIONS
+
+C<-parent>, C<-x>, C<-y>, C<-width>, C<-height>, 
+C<-pad>, C<-padleft>, C<-padright>, C<-padtop>, C<-padbottom>,
+C<-ipad>, C<-ipadleft>, C<-ipadright>, C<-ipadtop>, C<-ipadbottom>,
+C<-title>, C<-titlefullwidth>, C<-titlereverse>, C<-onfocus>,
+C<-onblur>.
+
+For an explanation of these standard options, see 
+L<Curses::UI::Widget|Curses::UI::Widget>.
+
+=head1 WIDGET-SPECIFIC OPTIONS
+
+=over 8
+
+=item * C<-colon> < NUMBER >
+
+ View colon flag.
+ Default value is '1'.
+
+=item * C<-fg> < CHARACTER >
+
+ Foreground color.
+ Possible values are defined in Curses::UI::Color.
+ Default value is '-1'.
+
+=item * C<-time> < TIME >
+
+ Time.
+ Default value is actual time.
+
+=item * C<-second> < SECOND_FLAG >
+
+ View second flag.
+ Default value is 0.
+
+=back
+
+=head1 STANDARD METHODS
+
+C<layout>, C<draw>, C<intellidraw>, C<focus>, C<onFocus>, C<onBlur>.
+
+For an explanation of these standard methods, see
+L<Curses::UI::Widget|Curses::UI::Widget>.
+
+=head1 WIDGET-SPECIFIC METHODS
+
+=over 8
+
+=item * C<new(%parameters)>
+
+ Constructor.
+ Create widget with volume in graphic form, defined by -volume number.
+ Returns object.
+
+=item * C<colon()>
+
+ Get or set colon flag.
+ Returns colon flag.
+
+=item * C<time()>
+
+ Get or set time.
+ Returns time in seconds.
+
+=back
+
+=head1 EXAMPLE1
+
+ # Pragmas.
+ use strict;
+ use warnings;
+
+ # Modules.
+ use Curses::UI;
+
+ # Object.
+ my $cui = Curses::UI->new;
+ 
+ # Main window.
+ my $win = $cui->add('window_id', 'Window');
+ 
+ # Add volume.
+ $win->add(
+         undef, 'Curses::UI::Time',
+         '-time' => 1400609240,
+ );
+ 
+ # Binding for quit.
+ $win->set_binding(\&exit, "\cQ", "\cC");
+ 
+ # Loop.
+ $cui->mainloop;
+
+=head1 EXAMPLE2
+
+ # Pragmas.
+ use strict;
+ use warnings;
+
+ # Modules.
+ use Curses::UI;
+
+ # Object.
+ my $cui = Curses::UI->new(
+         -color_support => 1,
+ );
+ 
+ # Main window.
+ my $win = $cui->add('window_id', 'Window');
+
+ # Add time.
+ my $time = $win->add(
+         undef, 'Curses::UI::Time',
+         '-border' => 1,
+         '-second' => 1,
+         '-time' => time,
+ );
+ 
+ # Binding for quit.
+ $win->set_binding(\&exit, "\cQ", "\cC");
+
+ # Timer.
+ $cui->set_timer(
+         'timer',
+         sub {
+                 $time->time(time);
+                 $cui->draw(1);
+                 return;
+         },
+         1,
+ );
+ 
+ # Loop.
+ $cui->mainloop;
+
+=head1 DEPENDENCIES
+
+L<Curses>,
+L<Curses::UI::Common>,
+L<Curses::UI::Label>,
+L<Curses::UI::Number>,
+L<Curses::UI::Widget>,
+L<Encode>,
+L<Readonly>.
+
+=head1 SEE ALSO
+
+L<Curses::UI>,
+L<Curses::UI::Widget>.
+
+=head1 REPOSITORY
+
+L<https://github.com/tupinek/Curses-UI-Time>
+
+=head1 AUTHOR
+
+Michal Špaček L<mailto:skim@cpan.org>
+
+L<http://skim.cz>
+
+=head1 LICENSE AND COPYRIGHT
+
+BSD license.
+
+=head1 DEDICATION
+
+To Czech Perl Workshop 2014 and their organizers.
+
+=head1 VERSION
+
+0.01
+
+=cut
