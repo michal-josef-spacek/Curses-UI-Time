@@ -24,7 +24,7 @@ Readonly::Scalar our $COLON => decode_utf8(<<'END');
 END
 
 # Version.
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 # Constructor.
 sub new {
@@ -360,6 +360,6 @@ To Czech Perl Workshop 2014 and their organizers.
 
 =head1 VERSION
 
-0.01
+0.02
 
 =cut
