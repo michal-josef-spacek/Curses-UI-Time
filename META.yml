@@ -1,5 +1,5 @@
 ---
-abstract: TODO
+abstract: 'Create and manipulate time widgets.'
 author:
   - 'Michal Špaček <skim@cpan.org>'
 build_requires:
