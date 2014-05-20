@@ -21,6 +21,7 @@ meta-spec:
 name: Curses-UI-Time
 no_index:
   directory:
+    - examples
     - inc
     - t
 resources:
