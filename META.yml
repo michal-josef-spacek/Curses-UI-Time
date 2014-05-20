@@ -24,6 +24,11 @@ no_index:
     - examples
     - inc
     - t
+requires:
+  Curses: 0
+  Curses::UI::Number: 0
+  Encode: 0
+  Readonly: 0
 resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Curses-UI-Time
   homepage: https://github.com/tupinek/Curses-UI-Time
