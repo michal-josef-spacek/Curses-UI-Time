@@ -22,6 +22,9 @@ Readonly::Scalar our $COLON => decode_utf8(<<'END');
  ██ 
     
 END
+Readonly::Scalar our $HEIGHT => 5;
+Readonly::Scalar our $WIDTH_BASE => 32;
+Readonly::Scalar our $WIDTH_SEC => 52;
 
 # Version.
 our $VERSION = 0.02;
@@ -40,11 +43,11 @@ sub new {
 	);
 
 	# Width and height.
-	$args{'-height'} = height_by_windowscrheight(5, %args);
+	$args{'-height'} = height_by_windowscrheight($HEIGHT, %args);
 	if ($args{'-second'}) {
-		$args{'-width'} = width_by_windowscrwidth(52, %args);
+		$args{'-width'} = width_by_windowscrwidth($WIDTH_BASE, %args);
 	} else {
-		$args{'-width'} = width_by_windowscrwidth(32, %args);
+		$args{'-width'} = width_by_windowscrwidth($WIDTH_BASE, %args);
 	}
 
 	# Create the widget.

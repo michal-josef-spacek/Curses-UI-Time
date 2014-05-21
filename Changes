@@ -2,6 +2,7 @@
  - Add minimal Perl version.
  - Add missing LICENSE file.
  - Fix dependecies to Curses::UI instead Curses.
+ - Rewrite variables to named variables.
 
 0.01 2014-05-20T20:22:00+02:00
  - First version.
