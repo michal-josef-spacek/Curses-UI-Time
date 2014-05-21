@@ -54,7 +54,7 @@ sub new {
 	my $self = $class->SUPER::new(%args);
 
 	# Parse time.
-	my ($sec, $min, $hour) = map { sprintf '%02d', $_ } localtime($args{'-time'});
+	my ($sec, $min, $hour) = map { sprintf '%02d', $_ } localtime $args{'-time'};
 
 	# Widgets.
 	$self->add(
@@ -144,7 +144,7 @@ sub time {
 	if (defined $time) {
 		$self->{'-time'} = $time;
 		my ($sec, $min, $hour) = map { sprintf '%02d', $_ }
-			localtime($time);
+			localtime $time;
 		$self->getobj('hour1')->num(substr $hour, 0, 1);
 		$self->getobj('hour2')->num(substr $hour, 1, 1);
 		$self->getobj('min1')->num(substr $min, 0, 1);
