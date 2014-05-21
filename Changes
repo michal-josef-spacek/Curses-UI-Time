@@ -1,5 +1,6 @@
 0.02
  - Add minimal Perl version.
+ - Add missing __END__.
  - Add missing LICENSE file.
  - Fix dependecies to Curses::UI instead Curses.
  - Rewrite variables to named variables.
