@@ -25,7 +25,7 @@ no_index:
     - inc
     - t
 requires:
-  Curses: 0
+  Curses::UI: 0
   Curses::UI::Number: 0
   Encode: 0
   Readonly: 0
