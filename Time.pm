@@ -45,7 +45,7 @@ sub new {
 	# Width and height.
 	$args{'-height'} = height_by_windowscrheight($HEIGHT, %args);
 	if ($args{'-second'}) {
-		$args{'-width'} = width_by_windowscrwidth($WIDTH_BASE, %args);
+		$args{'-width'} = width_by_windowscrwidth($WIDTH_SEC, %args);
 	} else {
 		$args{'-width'} = width_by_windowscrwidth($WIDTH_BASE, %args);
 	}
