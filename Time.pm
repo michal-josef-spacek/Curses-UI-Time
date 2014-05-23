@@ -363,6 +363,8 @@ BSD license.
 
 To Czech Perl Workshop 2014 and their organizers.
 
+tty-clock program.
+
 =head1 VERSION
 
 0.03
