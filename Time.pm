@@ -24,6 +24,7 @@ Readonly::Scalar our $COLON => decode_utf8(<<'END');
 END
 Readonly::Scalar our $HEIGHT_BASE => 5;
 Readonly::Scalar our $HEIGHT_DATE => 7;
+Readonly::Scalar our $YEAR_ADD => 1900;
 Readonly::Scalar our $WIDTH_BASE => 32;
 Readonly::Scalar our $WIDTH_COLON => 4;
 Readonly::Scalar our $WIDTH_DATE => 10;
@@ -200,7 +201,7 @@ sub _localtime {
 	$hour = sprintf '%02d', $hour;
 	$day = sprintf '%02d', $day;
 	$mon = sprintf '%02d', ($mon + 1);
-	$year = sprintf '%04d', ($year + 1900);
+	$year = sprintf '%04d', ($year + $YEAR_ADD);
 	return ($sec, $min, $hour, $day, $mon, $year);
 }
 
