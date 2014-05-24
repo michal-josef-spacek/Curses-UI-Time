@@ -1,7 +1,9 @@
 TODO
 ====
 4. Pridat datum pod ten widget s odsazenim radku.
-5.
+5. Kdyz mam vytvoreny objekt, tak pouzivat interni promenne objektu namisto
+   $args.
+6.
 
 Applied
 =======
