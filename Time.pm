@@ -63,57 +63,57 @@ sub new {
 	my $self = $class->SUPER::new(%args);
 
 	# Parse time.
-	my ($sec, $min, $hour, $day, $mon, $year) = $self->_localtime($args{'-time'});
+	my ($sec, $min, $hour, $day, $mon, $year) = $self->_localtime($self->{'-time'});
 
 	# Widgets.
 	$self->add(
 		'hour1', 'Curses::UI::Number',
-		'-fg' => $args{'-fg'},
+		'-fg' => $self->{'-fg'},
 		'-num' => (substr $hour, 0, 1),
 		'-x' => 0,
 	);
 	$self->add(
 		'hour2', 'Curses::UI::Number',
-		'-fg' => $args{'-fg'},
+		'-fg' => $self->{'-fg'},
 		'-num' => (substr $hour, 1, 1),
 		'-x' => 7,
 	);
 	$self->add(
 		'colon1', 'Label',
-		'-fg' => $args{'-fg'},
+		'-fg' => $self->{'-fg'},
 		'-hidden' => ! $self->{'-colon'},
 		'-text' => $COLON,
 		'-x' => 14,
 	);
 	$self->add(
 		'min1', 'Curses::UI::Number',
-		'-fg' => $args{'-fg'},
+		'-fg' => $self->{'-fg'},
 		'-num' => (substr $min, 0, 1),
 		'-x' => 19,
 	);
 	$self->add(
 		'min2', 'Curses::UI::Number',
-		'-fg' => $args{'-fg'},
+		'-fg' => $self->{'-fg'},
 		'-num' => (substr $min, 1, 1),
 		'-x' => 26,
 	);
 	if ($self->{'-second'}) {
 		$self->add(
 			'colon2', 'Label',
-			'-fg' => $args{'-fg'},
+			'-fg' => $self->{'-fg'},
 			'-hidden' => ! $self->{'-colon'},
 			'-text' => $COLON,
 			'-x' => 33,
 		);
 		$self->add(
 			'sec1', 'Curses::UI::Number',
-			'-fg' => $args{'-fg'},
+			'-fg' => $self->{'-fg'},
 			'-num' => (substr $sec, 0, 1),
 			'-x' => 38,
 		);
 		$self->add(
 			'sec2', 'Curses::UI::Number',
-			'-fg' => $args{'-fg'},
+			'-fg' => $self->{'-fg'},
 			'-num' => (substr $sec, 1, 1),
 			'-x' => 45,
 		);
@@ -123,7 +123,7 @@ sub new {
 		$self->add(
 			'date', 'Label',
 			'-text' => (join '-', $year, $mon, $day),
-			'-fg' => $args{'-fg'},
+			'-fg' => $self->{'-fg'},
 			'-x' => $x,
 			'-y' => $HEIGHT_DATE - 1,
 		);
