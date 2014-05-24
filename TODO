@@ -1,6 +1,5 @@
 TODO
 ====
-4. Pridat datum pod ten widget s odsazenim radku.
 6. Do konstatnt pridat sirku pismena.
 7. Pridat check na time, jestli je validni?
 8.
@@ -18,4 +17,7 @@ OK [20140501] skim
 
 5. Kdyz mam vytvoreny objekt, tak pouzivat interni promenne objektu namisto
    $args.
+OK [20140524] skim
+
+4. Pridat datum pod ten widget s odsazenim radku.
 OK [20140524] skim
