@@ -22,8 +22,10 @@ Readonly::Scalar our $COLON => decode_utf8(<<'END');
  ██ 
     
 END
-Readonly::Scalar our $HEIGHT => 5;
+Readonly::Scalar our $HEIGHT_BASE => 5;
+Readonly::Scalar our $HEIGHT_DATE => 7;
 Readonly::Scalar our $WIDTH_BASE => 32;
+Readonly::Scalar our $WIDTH_DATE => 10;
 Readonly::Scalar our $WIDTH_SEC => 52;
 
 # Version.
@@ -35,6 +37,7 @@ sub new {
 	keys_to_lowercase(\%userargs);
 	my %args = (
 		'-colon' => 1,
+		'-date' => 0,
 		'-fg' => -1,
 		'-time' => time,
 		'-second' => 0,
@@ -43,7 +46,13 @@ sub new {
 	);
 
 	# Width and height.
-	$args{'-height'} = height_by_windowscrheight($HEIGHT, %args);
+	if ($args{'-date'}) {
+		$args{'-height'} = height_by_windowscrheight($HEIGHT_DATE,
+			%args);
+	} else {
+		$args{'-height'} = height_by_windowscrheight($HEIGHT_BASE,
+			%args);
+	}
 	if ($args{'-second'}) {
 		$args{'-width'} = width_by_windowscrwidth($WIDTH_SEC, %args);
 	} else {
@@ -54,7 +63,7 @@ sub new {
 	my $self = $class->SUPER::new(%args);
 
 	# Parse time.
-	my ($sec, $min, $hour) = map { sprintf '%02d', $_ } localtime $args{'-time'};
+	my ($sec, $min, $hour, $day, $mon, $year) = $self->_localtime($args{'-time'});
 
 	# Widgets.
 	$self->add(
@@ -109,6 +118,16 @@ sub new {
 			'-x' => 45,
 		);
 	}
+	if ($self->{'-date'}) {
+		my $x = ($self->width - $WIDTH_DATE) / 2;
+		$self->add(
+			'date', 'Label',
+			'-text' => (join '-', $year, $mon, $day),
+			'-fg' => $args{'-fg'},
+			'-x' => $x,
+			'-y' => $HEIGHT_DATE - 1,
+		);
+	}
 
 	# Layout.
 	$self->layout;
@@ -143,8 +162,8 @@ sub time {
 	my ($self, $time) = @_;
 	if (defined $time) {
 		$self->{'-time'} = $time;
-		my ($sec, $min, $hour) = map { sprintf '%02d', $_ }
-			localtime $time;
+		my ($sec, $min, $hour, $day, $mon, $year)
+			= $self->_localtime($time);
 		$self->getobj('hour1')->num(substr $hour, 0, 1);
 		$self->getobj('hour2')->num(substr $hour, 1, 1);
 		$self->getobj('min1')->num(substr $min, 0, 1);
@@ -153,8 +172,25 @@ sub time {
 			$self->getobj('sec1')->num(substr $sec, 0, 1);
 			$self->getobj('sec2')->num(substr $sec, 1, 1);
 		}
+		if ($self->{'-date'}) {
+			$self->getobj('date')->text(join '-', $year, $mon,
+				$day);
+		}
 	}
 	return $self->{'-time'};
+}
+
+# Get prepared time and date fields.
+sub _localtime {
+	my ($self, $time) = @_;
+	my ($sec, $min, $hour, $day, $mon, $year) = localtime $time;
+	$sec = sprintf '%02d', $sec;
+	$min = sprintf '%02d', $min;
+	$hour = sprintf '%02d', $hour;
+	$day = sprintf '%02d', $day;
+	$mon = sprintf '%02d', ($mon + 1);
+	$year = sprintf '%04d', ($year + 1900);
+	return ($sec, $min, $hour, $day, $mon, $year);
 }
 
 1;
@@ -214,6 +250,11 @@ L<Curses::UI::Widget|Curses::UI::Widget>.
  View colon flag.
  Default value is '1'.
 
+=item * C<-date> < DATE_FLAG >
+
+ View date flag.
+ Default value is 0.
+
 =item * C<-fg> < CHARACTER >
 
  Foreground color.
@@ -256,7 +297,7 @@ L<Curses::UI::Widget|Curses::UI::Widget>.
 
 =item * C<time()>
 
- Get or set time.
+ Get or set time (and date with -date => 1).
  Returns time in seconds.
 
 =back
@@ -309,6 +350,49 @@ L<Curses::UI::Widget|Curses::UI::Widget>.
  my $time = $win->add(
          undef, 'Curses::UI::Time',
          '-border' => 1,
+         '-second' => 1,
+         '-time' => time,
+ );
+ 
+ # Binding for quit.
+ $win->set_binding(\&exit, "\cQ", "\cC");
+
+ # Timer.
+ $cui->set_timer(
+         'timer',
+         sub {
+                 $time->time(time);
+                 $cui->draw(1);
+                 return;
+         },
+         1,
+ );
+ 
+ # Loop.
+ $cui->mainloop;
+
+=head1 EXAMPLE3
+
+ # Pragmas.
+ use strict;
+ use warnings;
+
+ # Modules.
+ use Curses::UI;
+
+ # Object.
+ my $cui = Curses::UI->new(
+         -color_support => 1,
+ );
+ 
+ # Main window.
+ my $win = $cui->add('window_id', 'Window');
+
+ # Add time.
+ my $time = $win->add(
+         undef, 'Curses::UI::Time',
+         '-border' => 1,
+         '-date' => 1,
          '-second' => 1,
          '-time' => time,
  );

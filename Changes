@@ -1,4 +1,5 @@
 0.03
+ - Add -date flag for view date in widget.
  - Add dedication to tty-clock program.
  - Fix test dependencies.
 
