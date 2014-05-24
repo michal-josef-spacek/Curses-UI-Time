@@ -4,7 +4,8 @@ TODO
 5. Kdyz mam vytvoreny objekt, tak pouzivat interni promenne objektu namisto
    $args.
 6. Do konstatnt pridat sirku pismena.
-7.
+7. Pridat check na time, jestli je validni?
+8.
 
 Applied
 =======
