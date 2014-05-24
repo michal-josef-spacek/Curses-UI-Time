@@ -25,8 +25,11 @@ END
 Readonly::Scalar our $HEIGHT_BASE => 5;
 Readonly::Scalar our $HEIGHT_DATE => 7;
 Readonly::Scalar our $WIDTH_BASE => 32;
+Readonly::Scalar our $WIDTH_COLON => 4;
 Readonly::Scalar our $WIDTH_DATE => 10;
+Readonly::Scalar our $WIDTH_NUM => 6;
 Readonly::Scalar our $WIDTH_SEC => 52;
+Readonly::Scalar our $WIDTH_SPACE => 1;
 
 # Version.
 our $VERSION = 0.03;
@@ -66,56 +69,64 @@ sub new {
 	my ($sec, $min, $hour, $day, $mon, $year) = $self->_localtime($self->{'-time'});
 
 	# Widgets.
+	my $x = 0;
 	$self->add(
 		'hour1', 'Curses::UI::Number',
 		'-fg' => $self->{'-fg'},
 		'-num' => (substr $hour, 0, 1),
-		'-x' => 0,
+		'-x' => $x,
 	);
+	$x += $WIDTH_NUM + $WIDTH_SPACE;
 	$self->add(
 		'hour2', 'Curses::UI::Number',
 		'-fg' => $self->{'-fg'},
 		'-num' => (substr $hour, 1, 1),
-		'-x' => 7,
+		'-x' => $x,
 	);
+	$x += $WIDTH_NUM + $WIDTH_SPACE;
 	$self->add(
 		'colon1', 'Label',
 		'-fg' => $self->{'-fg'},
 		'-hidden' => ! $self->{'-colon'},
 		'-text' => $COLON,
-		'-x' => 14,
+		'-x' => $x,
 	);
+	$x += $WIDTH_COLON + $WIDTH_SPACE;
 	$self->add(
 		'min1', 'Curses::UI::Number',
 		'-fg' => $self->{'-fg'},
 		'-num' => (substr $min, 0, 1),
-		'-x' => 19,
+		'-x' => $x,
 	);
+	$x += $WIDTH_NUM + $WIDTH_SPACE;
 	$self->add(
 		'min2', 'Curses::UI::Number',
 		'-fg' => $self->{'-fg'},
 		'-num' => (substr $min, 1, 1),
-		'-x' => 26,
+		'-x' => $x,
 	);
 	if ($self->{'-second'}) {
+		$x += $WIDTH_NUM + $WIDTH_SPACE;
 		$self->add(
 			'colon2', 'Label',
 			'-fg' => $self->{'-fg'},
 			'-hidden' => ! $self->{'-colon'},
 			'-text' => $COLON,
-			'-x' => 33,
+			'-x' => $x,
 		);
+		$x += $WIDTH_COLON + $WIDTH_SPACE;
 		$self->add(
 			'sec1', 'Curses::UI::Number',
 			'-fg' => $self->{'-fg'},
 			'-num' => (substr $sec, 0, 1),
-			'-x' => 38,
+			'-x' => $x,
 		);
+		$x += $WIDTH_NUM + $WIDTH_SPACE;
 		$self->add(
 			'sec2', 'Curses::UI::Number',
 			'-fg' => $self->{'-fg'},
 			'-num' => (substr $sec, 1, 1),
-			'-x' => 45,
+			'-x' => $x,
 		);
 	}
 	if ($self->{'-date'}) {
