@@ -119,12 +119,12 @@ sub new {
 		);
 	}
 	if ($self->{'-date'}) {
-		my $x = ($self->width - $WIDTH_DATE) / 2;
+		my $date_x = ($self->width - $WIDTH_DATE) / 2;
 		$self->add(
 			'date', 'Label',
 			'-text' => (join '-', $year, $mon, $day),
 			'-fg' => $self->{'-fg'},
-			'-x' => $x,
+			'-x' => $date_x,
 			'-y' => $HEIGHT_DATE - 1,
 		);
 	}
