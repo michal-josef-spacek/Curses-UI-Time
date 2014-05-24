@@ -22,6 +22,7 @@ Readonly::Scalar our $COLON => decode_utf8(<<'END');
  ██ 
     
 END
+Readonly::Scalar our $DASH => q{-};
 Readonly::Scalar our $HEIGHT_BASE => 5;
 Readonly::Scalar our $HEIGHT_DATE => 7;
 Readonly::Scalar our $YEAR_ADD => 1900;
@@ -134,7 +135,7 @@ sub new {
 		my $date_x = ($self->width - $WIDTH_DATE) / 2;
 		$self->add(
 			'date', 'Label',
-			'-text' => (join '-', $year, $mon, $day),
+			'-text' => (join $DASH, $year, $mon, $day),
 			'-fg' => $self->{'-fg'},
 			'-x' => $date_x,
 			'-y' => $HEIGHT_DATE - 1,
@@ -185,7 +186,7 @@ sub time {
 			$self->getobj('sec2')->num(substr $sec, 1, 1);
 		}
 		if ($self->{'-date'}) {
-			$self->getobj('date')->text(join '-', $year, $mon,
+			$self->getobj('date')->text(join $DASH, $year, $mon,
 				$day);
 		}
 	}
