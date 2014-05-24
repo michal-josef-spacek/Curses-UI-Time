@@ -1,4 +1,5 @@
 0.04
+ - Add output for examples in doc.
 
 0.03 2014-05-24T10:57:42+02:00
  - Add -date flag for view date in widget.
