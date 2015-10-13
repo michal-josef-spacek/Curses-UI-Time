@@ -466,8 +466,13 @@ L<Readonly>.
 
 =head1 SEE ALSO
 
-L<Curses::UI>,
-L<Curses::UI::Widget>.
+=over
+
+=item L<Task::Curses::UI>
+
+Install the Curses::UI modules.
+
+=back
 
 =head1 REPOSITORY
 
