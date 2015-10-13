@@ -1,4 +1,4 @@
-0.05
+0.05 2015-10-13T23:50:53+02:00
  - Improve LICENSE AND COPYRIGHT section in doc.
  - Improve SEE ALSO section in doc.
  - Move author tests to xt/ directory.
