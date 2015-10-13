@@ -33,4 +33,4 @@ resources:
   homepage: https://github.com/tupinek/Curses-UI-Time
   license: http://opensource.org/licenses/bsd-license.php
   repository: git://github.com/tupinek/Curses-UI-Time
-version: '0.05'
+version: '0.06'

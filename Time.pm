@@ -34,7 +34,7 @@ Readonly::Scalar our $WIDTH_SEC => 52;
 Readonly::Scalar our $WIDTH_SPACE => 1;
 
 # Version.
-our $VERSION = 0.05;
+our $VERSION = 0.06;
 
 # Constructor.
 sub new {
@@ -497,6 +497,6 @@ tty-clock program.
 
 =head1 VERSION
 
-0.05
+0.06
 
 =cut
