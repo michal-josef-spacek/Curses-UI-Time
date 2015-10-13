@@ -7,7 +7,7 @@ use inc::Module::Install;
 
 # Definition.
 abstract 'Create and manipulate time widgets.';
-author 'Michal Špaček <skim@cpan.org>';
+author 'Michal Spacek <skim@cpan.org>';
 license 'bsd';
 name 'Curses-UI-Time';
 readme_from 'Time.pm';

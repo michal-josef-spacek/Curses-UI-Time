@@ -1,4 +1,5 @@
 0.05
+ - Remove diacritics from author name in Makefile.PL.
 
 0.04 2014-08-07T13:06:32+02:00
  - Add output for examples in doc.
