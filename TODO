@@ -3,7 +3,8 @@ TODO
 7. Pridat check na time, jestli je validni?
 8. Testy.
    Tady je zasadni otazka, jak toto testovat?
-9.
+9. Problem s LC_ALL=C, kdy se nezobrazi dobre ctverecek.
+10.
 
 Applied
 =======
