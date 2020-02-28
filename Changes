@@ -1,6 +1,7 @@
 0.06
  - Update .travis.yml.
  - Update Module::Install to 1.19 version.
+ - Update author name.
 
 0.05 2015-10-13T23:50:53+02:00
  - Improve LICENSE AND COPYRIGHT section in doc.
