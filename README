@@ -81,11 +81,9 @@ WIDGET-SPECIFIC METHODS
              Returns time in seconds.
 
 EXAMPLE1
-     # Pragmas.
      use strict;
      use warnings;
 
-     # Modules.
      use Curses::UI;
 
      # Object.
@@ -114,11 +112,9 @@ EXAMPLE1
      # ██████ ██████      ██████     ██
 
 EXAMPLE2
-     # Pragmas.
      use strict;
      use warnings;
 
-     # Modules.
      use Curses::UI;
 
      # Object.
@@ -164,11 +160,9 @@ EXAMPLE2
      # └────────────────────────────────────────────────────┘
 
 EXAMPLE3
-     # Pragmas.
      use strict;
      use warnings;
 
-     # Modules.
      use Curses::UI;
 
      # Object.

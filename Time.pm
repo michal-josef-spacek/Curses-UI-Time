@@ -1,12 +1,10 @@
 package Curses::UI::Time;
 
-# Pragmas.
 use Curses::UI::Widget;
 use base qw(Curses::UI::ContainerWidget);
 use strict;
 use warnings;
 
-# Modules.
 use Curses;
 use Curses::UI::Common qw(keys_to_lowercase);
 use Curses::UI::Label;
@@ -33,7 +31,6 @@ Readonly::Scalar our $WIDTH_NUM => 6;
 Readonly::Scalar our $WIDTH_SEC => 52;
 Readonly::Scalar our $WIDTH_SPACE => 1;
 
-# Version.
 our $VERSION = 0.06;
 
 # Constructor.
@@ -317,11 +314,9 @@ L<Curses::UI::Widget|Curses::UI::Widget>.
 
 =head1 EXAMPLE1
 
- # Pragmas.
  use strict;
  use warnings;
 
- # Modules.
  use Curses::UI;
 
  # Object.
@@ -351,11 +346,9 @@ L<Curses::UI::Widget|Curses::UI::Widget>.
 
 =head1 EXAMPLE2
 
- # Pragmas.
  use strict;
  use warnings;
 
- # Modules.
  use Curses::UI;
 
  # Object.
@@ -402,11 +395,9 @@ L<Curses::UI::Widget|Curses::UI::Widget>.
 
 =head1 EXAMPLE3
 
- # Pragmas.
  use strict;
  use warnings;
 
- # Modules.
  use Curses::UI;
 
  # Object.
