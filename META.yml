@@ -30,7 +30,7 @@ requires:
   perl: 5.6.0
 resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Curses-UI-Time
-  homepage: https://github.com/tupinek/Curses-UI-Time
+  homepage: https://github.com/michal-josef-spacek/Curses-UI-Time
   license: http://opensource.org/licenses/bsd-license.php
-  repository: git://github.com/tupinek/Curses-UI-Time
+  repository: git://github.com/michal-josef-spacek/Curses-UI-Time
 version: '0.06'
