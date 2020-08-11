@@ -229,6 +229,7 @@ Curses::UI::Time - Create and manipulate time widgets.
 =head1 SYNOPSIS
 
  use Curses::UI;
+
  my $win = $cui->add('window_id', 'Window');
  my $time = $win->add(
          'mynum', 'Curses::UI::Time',

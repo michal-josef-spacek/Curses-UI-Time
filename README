@@ -13,6 +13,7 @@ CLASS HIERARCHY
 
 SYNOPSIS
      use Curses::UI;
+
      my $win = $cui->add('window_id', 'Window');
      my $time = $win->add(
              'mynum', 'Curses::UI::Time',
