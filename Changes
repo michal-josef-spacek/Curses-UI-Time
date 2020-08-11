@@ -1,4 +1,5 @@
 0.06
+ - Improve LICENSE AND COPYRIGHT section in doc.
  - Makefile.PL fails with no '.' in @INC.
  - Rewrite from Encode to Unicode::UTF8.
  - Update .travis.yml.
