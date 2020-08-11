@@ -9,8 +9,8 @@ use Curses;
 use Curses::UI::Common qw(keys_to_lowercase);
 use Curses::UI::Label;
 use Curses::UI::Number;
-use Encode qw(decode_utf8);
 use Readonly;
+use Unicode::UTF8 qw(decode_utf8);
 
 # Constants.
 Readonly::Scalar our $COLON => decode_utf8(<<'END');
@@ -452,8 +452,8 @@ L<Curses::UI::Common>,
 L<Curses::UI::Label>,
 L<Curses::UI::Number>,
 L<Curses::UI::Widget>,
-L<Encode>,
-L<Readonly>.
+L<Readonly>,
+L<Unicode::UTF8>.
 
 =head1 SEE ALSO
 

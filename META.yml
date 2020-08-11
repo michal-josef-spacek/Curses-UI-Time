@@ -25,8 +25,8 @@ no_index:
 requires:
   Curses::UI: 0
   Curses::UI::Number: 0
-  Encode: 0
   Readonly: 0
+  Unicode::UTF8: 0
   perl: 5.6.0
 resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Curses-UI-Time

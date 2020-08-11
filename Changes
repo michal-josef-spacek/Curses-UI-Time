@@ -1,4 +1,5 @@
 0.06
+ - Rewrite from Encode to Unicode::UTF8.
  - Update .travis.yml.
  - Update Module::Install to 1.19 version.
  - Update author github username.

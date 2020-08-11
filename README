@@ -212,7 +212,7 @@ EXAMPLE3
 
 DEPENDENCIES
     Curses, Curses::UI::Common, Curses::UI::Label, Curses::UI::Number,
-    Curses::UI::Widget, Encode, Readonly.
+    Curses::UI::Widget, Readonly, Unicode::UTF8.
 
 SEE ALSO
     Task::Curses::UI
