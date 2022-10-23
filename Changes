@@ -2,6 +2,7 @@
  - Improve LICENSE AND COPYRIGHT section in doc.
  - Improve SYNOPSIS section in doc.
  - Makefile.PL fails with no '.' in @INC.
+ - Rename example to better names.
  - Rewrite from Encode to Unicode::UTF8.
  - Update .travis.yml.
  - Update Module::Install to 1.19 version.

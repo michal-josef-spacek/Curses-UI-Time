@@ -315,6 +315,8 @@ L<Curses::UI::Widget|Curses::UI::Widget>.
 
 =head1 EXAMPLE1
 
+=for comment filename=curses_ui_time.pl
+
  use strict;
  use warnings;
 
@@ -346,6 +348,8 @@ L<Curses::UI::Widget|Curses::UI::Widget>.
  # ██████ ██████      ██████     ██
 
 =head1 EXAMPLE2
+
+=for comment filename=curses_ui_clock.pl
 
  use strict;
  use warnings;
@@ -395,6 +399,8 @@ L<Curses::UI::Widget|Curses::UI::Widget>.
  # └────────────────────────────────────────────────────┘
 
 =head1 EXAMPLE3
+
+=for comment filename=curses_ui_clock_with_date.pl
 
  use strict;
  use warnings;
